@@ -1,1 +1,75 @@
 @import "tailwindcss";
+
+@theme {
+  --bg-main: "#4c75a3";
+}
+
+
+.task-add{
+  @media(max-width: 768px){
+    justify-content: space-between;
+  }
+}
+
+.task-add-btn{
+  @media(max-width: 600px){
+    width: 20%;
+  }
+}
+
+.task-add-input {
+  @media(max-width: 768px){
+    width: 90%;
+  }
+  @media(max-width: 600px){
+    width: 80%;
+  }
+}
+
+.task-item {
+  @media (max-width: 1284px) {
+    width: 80%;
+  }
+  @media(max-width: 600px){
+    width: 100%;
+  }
+}
+
+.task-title{
+  @media(max-width: 500px){
+    gap: 8px;
+    font-size: 14px;
+  }
+}
+
+.auth-form {
+  @media (max-width: 1284px) {
+    width: 80%;
+  }
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+}
+
+.auth-form__text{
+  @media(max-width: 440px){
+    text-align: center;
+    font-size: 14px;
+    font-weight: normal;
+  }
+}
+
+.register-form{
+  @media (max-width: 1284px) {
+    width: 80%;
+  }
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+}
+
+.form__btn{
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+}
