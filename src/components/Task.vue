@@ -9,19 +9,7 @@ const props = defineProps({
 
 <template>
   <div
-    class="
-    w-2/5 
-    border-2 
-    border-gray-700 
-     my-0 mx-auto 
-     flex 
-     justify-between
-     items-center 
-     px-4 
-     py-3 
-     rounded-[15px]
-     task-pc
-     w-full"
+    class="border-2 border-gray-700 my-0 mx-auto flex justify-between items-center px-4 py-3 rounded-[15px] task-pc w-full"
   >
     <div class="flex gap-4 task-title">
       <input type="checkbox" />
@@ -37,3 +25,13 @@ const props = defineProps({
     </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+.task-title {
+  @media (max-width: 500px) {
+    gap: 8px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+</style>

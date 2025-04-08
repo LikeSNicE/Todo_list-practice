@@ -25,9 +25,34 @@ import { RouterLink } from "vue-router";
         </button>
 
         <div class="flex flex-col items-center auth-form__text">
-          <router-link to="/registration" class="italic font-semibold">Нет аккаунта тогда зарегистрируетесь</router-link>
+          <router-link to="/registration" class="italic font-semibold text-color">Нет аккаунта тогда зарегистрируетесь</router-link>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped lang="scss">
+.auth-form {
+  @media (max-width: 1284px) {
+    width: 80%;
+  }
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+  &__text{
+    @media(max-width: 440px){
+    text-align: center;
+    font-size: 14px;
+    font-weight: normal;
+    color: var(--bg-main);
+  }
+  }
+}
+
+.form__btn{
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+}
+</style>
