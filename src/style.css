@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+  --bg-main: #4c75a3;
+}
+
+
+
+
+
