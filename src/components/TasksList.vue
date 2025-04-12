@@ -1,16 +1,18 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from "vue";
 import Task from "./Task.vue";
-import axios from "axios";
-import { base_url } from "../api/Baseapi";
+import api from "../api";
+import { type Tasks } from "../types";
 
-const tasks = ref([]);
+
+const tasks = ref<Tasks[]>([]);
+
 
 const getAlltask = async () => {
   try {
-    const { data } = await axios.get(`${base_url}/tasks`);
+    const { data } = await api.get('/tasks');
     tasks.value = data;
-  } catch (error) {
+  } catch (error: any) {
     console.log(error.message);
   }
 };
