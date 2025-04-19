@@ -5,18 +5,18 @@ import { RouterLink } from "vue-router";
 <template>
   <section class="flex justify-center items-center h-[90svh]">
     <div
-      class="border-2 border-gray-300 w-3/5 my-0 mx-auto p-10 shadow-md rounded-xl auth-form"
+      class="border-2 border-gray-300 w-2/5 my-0 mx-auto p-10 shadow-md rounded-xl auth-form"
     >
       <h3 class="font-bold text-xl text-center">Авторизация</h3>
 
-      <div class="flex flex-col gap-4 mt-[1em]">
+      <div class="flex flex-col gap-4 mt-[1em] justify-center items-center">
         <input
-          class="border-2 rounded-lg p-2 focus:outline focus:border-sky-500"
+          class="border-2 rounded-lg p-2 focus:outline focus:border-sky-500 w-3/5 form__input"
           type="email"
           placeholder="Введите Email..."
         />
         <input
-          class="border-2 rounded-lg p-2 focus:outline focus:border-sky-500"
+          class="border-2 rounded-lg p-2 focus:outline focus:border-sky-500 w-3/5 form__input "
           type="password"
           placeholder="Введите пароль..."
         />
@@ -45,8 +45,13 @@ import { RouterLink } from "vue-router";
     text-align: center;
     font-size: 14px;
     font-weight: normal;
-    color: var(--bg-main);
   }
+  }
+}
+
+.form__input{
+   @media (max-width: 500px) {
+    width: 100%;
   }
 }
 

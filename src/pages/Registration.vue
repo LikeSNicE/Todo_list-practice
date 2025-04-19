@@ -5,7 +5,7 @@ import { RouterLink } from "vue-router";
 <template>
   <section class="flex justify-center items-center h-[90svh]">
     <div
-      class="border-2 border-gray-300 w-3/5 my-0 mx-auto p-10 shadow-md rounded-xl register-form"
+      class="border-2 border-gray-300 w-2/5 my-0 mx-auto p-10 shadow-md rounded-xl register-form"
     >
       <div class="flex justify-between items-center">
         <h3 class="font-bold text-xl">Регистрация</h3>
@@ -16,7 +16,7 @@ import { RouterLink } from "vue-router";
         <input
           class="border-2 rounded-lg p-2 focus:outline focus:border-sky-500"
           type="email"
-          placeholder="Введите Email..."
+          placeholder="Введите Email... "
         />
         <input
           class="border-2 rounded-lg p-2 focus:outline focus:border-sky-500"
