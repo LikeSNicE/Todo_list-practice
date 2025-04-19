@@ -12,13 +12,10 @@ export const useTaskStore = defineStore("task", () => {
 
   const getAlltask = async () => {
     try {
-      loading.startLoading();
       const { data } = await api.get("/tasks");
       tasks.value = data;
     } catch (error: any) {
       console.log(error.message);
-    } finally {
-      loading.stopLoading();
     }
   };
 
