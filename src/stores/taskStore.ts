@@ -41,7 +41,8 @@ export const useTaskStore = defineStore("task", () => {
     try {
       loading.startLoading();
       await api.delete(`/tasks/${id}`);
-      tasks.value.filter((task) => task.id !== id);
+      const filteredTasks = tasks.value.filter((task) => task.id !== id);
+      tasks.value = filteredTasks;
     } catch (error: any) {
       console.log(error.message);
     } finally {

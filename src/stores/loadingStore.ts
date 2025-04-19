@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import { ref, type Ref } from "vue";
+import { ref } from "vue";
 
 export const useLoadingStore = defineStore("loading", () => {
-  const isLoading: Ref<boolean> = ref(false);
+  const isLoading = ref(false);
 
   const startLoading = () => {
     isLoading.value = true;
