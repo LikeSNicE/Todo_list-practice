@@ -3,11 +3,11 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-  <header class="flex pt-4 justify-between items-center header-1025">
+  <header class="flex pt-4 justify-between items-center ">
     <router-link to="/">
       <img
         class="w-[48px] h-[48px]"
-        src="../../public/images/logo-todos.svg"
+        src="../images/logo-todos.svg"
         alt="logo"
       />
     </router-link>

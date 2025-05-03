@@ -5,5 +5,14 @@ export interface baseUrlConfig{
 export interface Task {
   id: number,
   title: string,
-  isDone: boolean
+  isDone: boolean,
+  category: string | null
 }
+
+export interface Category {
+  id: number;
+  name: string,
+}
+
+
+

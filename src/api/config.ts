@@ -1,4 +1,4 @@
-import { type baseUrlConfig } from "../types";
+import { type baseUrlConfig } from "../types/types";
 
 export const config: baseUrlConfig = {
   base_url:
