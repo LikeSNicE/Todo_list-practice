@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import api from "../api";
 import { ref } from "vue";
 import { type Task as TaskType, type Category } from "../types/types";
-import getData from "../types/getDataGeneric";
+import getData from "../generics/getDataGeneric";
 import { useLoadingStore } from "./loadingStore";
 import { useModalStore } from "./modalStore";
 
@@ -61,6 +61,7 @@ export const useTaskStore = defineStore("task", () => {
       }
 
       tasks.value.push(data);
+
       modalStore.activeModal = "";
       inputTitle.value = "";
       categoryTask.value = "";
@@ -86,22 +87,6 @@ export const useTaskStore = defineStore("task", () => {
     }
   };
 
-
-  const updateCategoryName = async (id: number, newCategory: string | null) => {
-    try {
-      loading.startLoading();
-      await api.patch(`/tasks/${id}`, { category: newCategory });
-      const task = tasks.value.find((task) => task.id === id);
-      if (task) {
-        task.category = newCategory;
-      }
-    } catch (error: any) {
-      console.log(error.message);
-    } finally {
-      loading.stopLoading();
-    }
-  };
-
   const updateTaskField = async <Key extends keyof TaskType>(
     id: number,
     field: Key,
@@ -112,12 +97,12 @@ export const useTaskStore = defineStore("task", () => {
       await api.patch(`/tasks/${id}`, { [field]: value });
 
       const task = tasks.value.find((task) => task.id === id);
-      if(task){
+      if (task) {
         task[field] = value;
       }
     } catch (error: any) {
       console.error(`Failed to update ${field}:`, error.message);
-      return undefined; 
+      return undefined;
     } finally {
       loading.stopLoading();
     }
@@ -135,7 +120,6 @@ export const useTaskStore = defineStore("task", () => {
     getTask,
     addTask,
     removeTask,
-    updateCategoryName,
     updateTaskField,
   };
 });

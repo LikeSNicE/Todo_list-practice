@@ -2,25 +2,9 @@
 import { nextTick, ref, computed } from "vue";
 import { useTaskStore } from "../stores/taskStore";
 import { useModalStore } from "../stores/modalStore";
+import { type TodoProps } from "../types/types";
 
-const props = defineProps({
-  id: {
-    type: Number,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  isDone: {
-    type: Boolean,
-    required: true,
-  },
-  category: {
-    type: [String, null],
-    required: true,
-  },
-});
+const props = defineProps<TodoProps>();
 
 const taskStore = useTaskStore();
 const modalStore = useModalStore();
@@ -28,7 +12,6 @@ const modalStore = useModalStore();
 const inputTitleRef = ref<HTMLInputElement | null>(null);
 const isEditing = ref<boolean>(false);
 const editedTitle = ref<string>(props.title);
-
 const isChecked = ref<boolean>(props.isDone);
 
 const isEditMode = async () => {
