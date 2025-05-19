@@ -2,7 +2,7 @@
 import { computed } from "vue";
 import { useModalStore } from "../stores/modalStore";
 import { useTaskStore } from "../stores/taskStore";
-import Modal from "./Modal.vue";
+import Modal from "./ModalLayout.vue";
 
 const modalStore = useModalStore();
 const taskStore = useTaskStore();

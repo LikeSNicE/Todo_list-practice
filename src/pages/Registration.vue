@@ -1,12 +1,16 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import { useRegisterStore } from "../stores/registerStore";
+import AuthLayout from "../components/AuthLayout.vue";
+
+const registerStore = useRegisterStore();
+
+
 </script>
 
 <template>
-  <section class="flex justify-center items-center h-[90svh]">
-    <div
-      class="border-2 border-gray-300 w-2/5 my-0 mx-auto p-10 shadow-md rounded-xl register-form"
-    >
+  <AuthLayout>
+    <form @submit="registerStore.registerUser()">
       <div class="flex justify-between items-center">
         <h3 class="font-bold text-xl">Регистрация</h3>
         <router-link class="" to="/auth">Авторизация</router-link>
@@ -17,35 +21,29 @@ import { RouterLink } from "vue-router";
           class="border-2 rounded-lg p-2 focus:outline focus:border-sky-500"
           type="email"
           placeholder="Введите Email... "
+          v-model="registerStore.userEmail"
         />
         <input
           class="border-2 rounded-lg p-2 focus:outline focus:border-sky-500"
           type="password"
           placeholder="Введите пароль..."
+          v-model="registerStore.userPassword"
         />
         <button
+          type="submit"
           class="cursor-pointer bg-[#4C75A3] rounded-xl text-white py-2 w-3/5 my-0 mx-auto form__btn"
         >
           Создать новый аккаунт
         </button>
       </div>
-    </div>
-  </section>
+    </form>
+  </AuthLayout>
 </template>
 
 <style scoped lang="scss">
-.register-form {
-  @media (max-width: 1284px) {
-    width: 80%;
-  }
-  @media (max-width: 1024px) {
+.form__btn {
+  @media (max-width: 500px) {
     width: 100%;
-  }
-
-  .form__btn {
-    @media (max-width: 500px) {
-      width: 100%;
-    }
   }
 }
 </style>

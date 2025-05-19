@@ -2,7 +2,7 @@
 import { ref, onMounted } from "vue";
 import { useModalStore } from "../stores/modalStore";
 import { useTaskStore } from "../stores/taskStore";
-import Modal from "./Modal.vue";
+import Modal from "./ModalLayout.vue";
 
 const modalStore = useModalStore();
 const taskStore = useTaskStore();
@@ -64,7 +64,7 @@ onMounted(async () => {
           taskStore.customCategory.trim() === ''
         "
         @click="taskStore.addTask()"
-        class="text-white bg-[#4C75A3] hover:bg-[#0b4283] rounded-lg text-sm px-5 py-2.5 text-center w-full disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-black"
+        class="text-white bg-(--bg-main) hover:bg-[#0b4283] rounded-lg text-sm px-5 py-2.5 text-center w-full disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-black"
       >
         Добавить Задачу
       </button>
