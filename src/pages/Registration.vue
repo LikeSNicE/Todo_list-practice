@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { RouterLink } from "vue-router";
 import { useRegisterStore } from "../stores/registerStore";
 import AuthLayout from "../components/AuthLayout.vue";
