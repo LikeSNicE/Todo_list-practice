@@ -8,7 +8,8 @@ export interface Task {
   id: number,
   title: string,
   isDone: boolean,
-  category: string | null
+  category: string | null,
+  description: string,
 }
 
 export interface Category {
@@ -29,4 +30,8 @@ export type TodoProps <Tcategory = string | null> = {
   title: string,
   isDone: boolean,
   category: Tcategory;
+  description: string
 }
+
+export type TaskField = "category" | "description";
+

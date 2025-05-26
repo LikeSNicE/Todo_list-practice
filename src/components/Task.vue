@@ -29,7 +29,7 @@ const isEditMode = async () => {
 const saveTitleChanges = (): void => {
   const normalizedTitle = editedTitle.value.trim();
   if (normalizedTitle && normalizedTitle !== props.title) {
-    taskStore.updateTaskField(props.id, 'title', normalizedTitle);
+    taskStore.updateTaskField(props.id, "title", normalizedTitle);
   } else if (normalizedTitle === "") {
     editedTitle.value = props.title;
   }
@@ -53,6 +53,11 @@ const handleCategoryModal = async () => {
   await taskStore.getTask(props.id);
   modalStore.openModal("category");
 };
+
+const handleDescriptionModal = async () => {
+  await taskStore.getTask(props.id);
+  modalStore.openModal("description")
+}
 </script>
 
 <template>
@@ -112,6 +117,17 @@ const handleCategoryModal = async () => {
         </button>
       </div>
     </div>
+    <div class="flex justify-between border-2 border-t-0 border-b-0 px-4 py-2">
+      <p class="w-[90%]">
+        {{ props.description }}
+      </p>
+      <button 
+      v-if="!isChecked"
+      @click="handleDescriptionModal"
+      class="cursor-pointer">
+        <i class="fa-solid fa-pen fa-lg"></i>
+      </button>
+    </div>
     <div
       class="px-4 py-2 border-2 border-t-0 rounded-bl-lg rounded-br-lg border-gray-700 bg-gray-300 flex justify-between"
     >
@@ -119,7 +135,11 @@ const handleCategoryModal = async () => {
         <span>{{ props.category ? props.category : "Без категории" }}</span>
       </div>
       <div class="flex gap-5">
-        <button class="cursor-pointer" @click="handleCategoryModal">
+        <button
+          class="cursor-pointer"
+          @click="handleCategoryModal"
+          v-if="!isChecked"
+        >
           <i class="fa-solid fa-pen fa-lg"></i>
         </button>
       </div>

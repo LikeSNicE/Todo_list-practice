@@ -10,6 +10,7 @@ const store = useLoadingStore();
       <div class="text-center mt-4">Загрузка ...</div>
     </div>
   </div>
+
 </template>
 
 <style scoped lang="scss">

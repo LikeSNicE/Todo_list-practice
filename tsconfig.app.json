@@ -15,7 +15,6 @@
     "allowImportingTsExtensions": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "allowJs": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

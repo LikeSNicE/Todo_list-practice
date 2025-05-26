@@ -1,9 +1,12 @@
 import { type AxiosResponse } from "axios";
 import api from "../api";
 
-const getData = async <T>(url: string): Promise<T> => {
+const getData = async <T>(
+  url: string,
+  params?: Record<string, any>
+): Promise<T> => {
   try {
-    const { data }: AxiosResponse<T> = await api.get(url);
+    const { data }: AxiosResponse<T> = await api.get(url, { params });
     return data;
   } catch (error) {
     const errorMessage =

@@ -11,7 +11,7 @@
 <style scoped lang="scss">
 .auth-layout {
   @media (max-width: 1284px) {
-    width: 80%;
+    width: 75%;
   }
   @media (max-width: 1024px) {
     width: 100%;
