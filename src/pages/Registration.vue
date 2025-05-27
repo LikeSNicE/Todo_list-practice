@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import { useRegisterStore } from "../stores/registerStore";
+import { useRouter } from "vue-router";
 import AuthLayout from "../components/AuthLayout.vue";
 
 const registerStore = useRegisterStore();
+const router = useRouter();
+
+const handleSubmit = async () => {
+  await registerStore.registerUser();
+  router.push({path: "auth"})
+}
+
 </script>
 
 <template>
   <AuthLayout>
-    <form @submit="registerStore.registerUser()">
+    <form @submit.prevent="handleSubmit">
       <div class="flex justify-between items-center">
         <h3 class="font-bold text-xl">Регистрация</h3>
         <router-link class="" to="/auth">Войти</router-link>
