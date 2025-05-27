@@ -10,8 +10,8 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes
-})
+  history: createWebHistory("/Todo_list-practice/"),
+  routes,
+});
 
 export default router;

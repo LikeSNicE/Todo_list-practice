@@ -26,7 +26,7 @@ const router = useRouter();
 onMounted(async () => {
   const user = await authStore.checkAuth();
   if (!user) {
-    router.push("/auth");
+    router.push({ path: 'auth' });
   }
 });
 </script>

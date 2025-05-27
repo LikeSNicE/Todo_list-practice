@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Todo_list-practice/',
+  base: '/Todo_list-practice',
   plugins: [
     vue(),
     tailwindcss(),
