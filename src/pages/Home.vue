@@ -23,8 +23,9 @@ const authStore = useAuthStore();
 const isAuthenticated = computed(() => authStore.authState.isAuthenticated);
 const router = useRouter();
 
-onMounted(() => {
-  if (!isAuthenticated.value) {
+onMounted(async () => {
+  const user = await authStore.checkAuth();
+  if (!user) {
     router.push("/auth");
   }
 });
@@ -33,11 +34,11 @@ onMounted(() => {
 <template>
   <div v-if="isAuthenticated && !loadingStore.isLoading">
     <TaskFilterSort />
+    <BtnModal />
     <TasksList />
     <TaskModal v-if="modalStore.activeModal === 'task'" />
     <CategoryModal v-if="modalStore.activeModal === 'category'" />
     <DescriptionModal v-if="modalStore.activeModal === 'description'" />
-    <BtnModal />
   </div>
 
   <div v-else>

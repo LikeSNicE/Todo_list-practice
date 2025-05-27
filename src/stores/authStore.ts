@@ -16,9 +16,7 @@ export const useAuthStore = defineStore("auth", () => {
   const checkAuth = async (): Promise<User | null> => {
     const token = localStorage.getItem("token");
 
-    if (!token) {
-      throw new Error("Пользователь не авторизован");
-    }
+    if(!token) return null;
 
     try {
       const { data } = await api.get("/auth_me", {
@@ -26,6 +24,7 @@ export const useAuthStore = defineStore("auth", () => {
           Authorization: `Bearer ${token}`,
         },
       });
+
       return data;
     } catch (error: any) {
       console.log(error.message);

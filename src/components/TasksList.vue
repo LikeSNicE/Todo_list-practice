@@ -18,7 +18,7 @@
     >
       На данный момент задач не имеется :D
     </p>
-    <ul class="mt-[2em] flex flex-col gap-4 justify-center items-center">
+    <ul class="my-[2em] flex flex-col gap-4 justify-center items-center">
       <li class="w-[50%] task-item" v-for="task in taskStore.tasks" :key="task.id">
         <Task 
         :id="task.id" 
