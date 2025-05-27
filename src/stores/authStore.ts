@@ -16,8 +16,6 @@ export const useAuthStore = defineStore("auth", () => {
   const checkAuth = async (): Promise<User | null> => {
     const token = localStorage.getItem("token");
 
-    if(!token) return null;
-
     try {
       const { data } = await api.get("/auth_me", {
         headers: {
