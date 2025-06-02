@@ -35,3 +35,5 @@ export type TodoProps <Tcategory = string | null> = {
 
 export type TaskField = "category" | "description";
 
+export type ModalName = "task" | "category" | "description";
+

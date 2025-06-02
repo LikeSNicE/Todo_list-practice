@@ -2,7 +2,7 @@
 import { nextTick, ref, computed } from "vue";
 import { useTaskStore } from "../stores/taskStore";
 import { useModalStore } from "../stores/modalStore";
-import { type TodoProps } from "../types/types";
+import { type TodoProps, type ModalName} from "../types/types";
 
 const props = defineProps<TodoProps>();
 
@@ -49,15 +49,11 @@ const handleCheckbox = (): void => {
   taskStore.updateTaskField(props.id, "isDone", isChecked.value);
 };
 
-const handleCategoryModal = async () => {
-  await taskStore.getTask(props.id);
-  modalStore.openModal("category");
-};
-
-const handleDescriptionModal = async () => {
-  await taskStore.getTask(props.id);
-  modalStore.openModal("description")
+const handleModal = async (idTask: number, nameModal: ModalName) => {
+  await taskStore.getTask(idTask);
+  modalStore.openModal(nameModal);
 }
+
 </script>
 
 <template>
@@ -123,7 +119,7 @@ const handleDescriptionModal = async () => {
       </p>
       <button 
       v-if="!isChecked"
-      @click="handleDescriptionModal"
+      @click="handleModal(props.id, 'description')"
       class="cursor-pointer">
         <i class="fa-solid fa-pen fa-lg"></i>
       </button>
@@ -137,7 +133,7 @@ const handleDescriptionModal = async () => {
       <div class="flex gap-5">
         <button
           class="cursor-pointer"
-          @click="handleCategoryModal"
+          @click="handleModal(props.id, 'category')"
           v-if="!isChecked"
         >
           <i class="fa-solid fa-pen fa-lg"></i>
