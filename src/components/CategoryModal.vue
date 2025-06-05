@@ -6,7 +6,7 @@ import Modal from "./ModalLayout.vue";
 
 const modalStore = useModalStore();
 
-const { fieldModal, updateField } = useTaskField("category");
+const { fieldModal, updateFieldModal } = useTaskField("category");
 </script>
 
 <template>
@@ -29,7 +29,7 @@ const { fieldModal, updateField } = useTaskField("category");
       <div class="flex justify-end gap-4">
         <button
           class="bg-(--bg-main) text-white p-2 rounded-lg w-[120px] cursor-pointer"
-          @click="updateField"
+          @click="updateFieldModal"
         >
           Изменить
         </button>

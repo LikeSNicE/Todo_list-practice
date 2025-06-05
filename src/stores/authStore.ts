@@ -8,7 +8,7 @@ export const useAuthStore = defineStore("auth", () => {
     isAuthenticated: !!localStorage.getItem("token"),
   });
 
-  const login = (token: string) => {
+  const setAuthToken = (token: string) => {
     localStorage.setItem("token", token);
     authState.isAuthenticated = true;
   };
@@ -34,7 +34,7 @@ export const useAuthStore = defineStore("auth", () => {
 
   return {
     authState,
-    login,
+    setAuthToken,
     checkAuth,
   };
 });

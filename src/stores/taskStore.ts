@@ -8,6 +8,7 @@ import { useModalStore } from "./modalStore";
 import { useFilterStore } from "./FilterStore";
 
 export const useTaskStore = defineStore("task", () => {
+  
   const loading = useLoadingStore();
   const modalStore = useModalStore();
   const filterStore = useFilterStore();

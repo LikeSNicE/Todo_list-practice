@@ -18,7 +18,7 @@ export const useTaskField = (field: TaskField) => {
     },
   });
 
-  const updateField = async () => {
+  const updateFieldModal = async () => {
     if (taskStore.task) {
       await taskStore.updateTaskField(
         taskStore.task.id,
@@ -29,5 +29,5 @@ export const useTaskField = (field: TaskField) => {
     }
   };
 
-  return { fieldModal, updateField };
+  return { fieldModal, updateFieldModal };
 };

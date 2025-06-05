@@ -4,7 +4,7 @@ import { useModalStore } from "../stores/modalStore";
 import { useTaskField } from "../composables/useTaskField";
 
 const modalStore = useModalStore();
-const { fieldModal, updateField } = useTaskField("description")
+const { fieldModal, updateFieldModal } = useTaskField("description")
 
 </script>
 
@@ -27,7 +27,7 @@ const { fieldModal, updateField } = useTaskField("description")
       <div class="flex justify-end gap-4">
         <button
           class="bg-(--bg-main) text-white p-2 rounded-lg w-[120px] cursor-pointer"
-          @click="updateField"
+          @click="updateFieldModal"
         >
           Изменить
         </button>

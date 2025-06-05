@@ -10,6 +10,8 @@ const taskStore = useTaskStore();
 onMounted(async () => {
   await taskStore.getAllCategories();
 });
+
+
 </script>
 
 <template>
