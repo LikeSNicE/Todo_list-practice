@@ -31,7 +31,7 @@ const handleLogOut = () => {
         v-if="!authStore.authState.isAuthenticated"
         class="text-xl"
         to="/auth"
-        >Авторизация</router-link
+        >Вход</router-link
       >
       <button
         v-if="authStore.authState.isAuthenticated"

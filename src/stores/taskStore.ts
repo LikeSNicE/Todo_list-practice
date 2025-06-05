@@ -5,10 +5,13 @@ import { type Task as TaskType, type Category } from "../types/types";
 import getData from "../generics/getDataGeneric";
 import { useLoadingStore } from "./loadingStore";
 import { useModalStore } from "./modalStore";
+import { useFilterStore } from "./FilterStore";
 
 export const useTaskStore = defineStore("task", () => {
+  
   const loading = useLoadingStore();
   const modalStore = useModalStore();
+  const filterStore = useFilterStore();
 
   const tasks = ref<TaskType[]>([]);
   const task = ref<TaskType | null>(null);
@@ -16,6 +19,7 @@ export const useTaskStore = defineStore("task", () => {
   const inputTitle = ref("");
   const categoryTask = ref("");
   const customCategory = ref("");
+  const descriptionTask = ref("");
   const categories = ref<Category[]>([]);
 
   const getTask = async (id: number) => {
@@ -24,7 +28,17 @@ export const useTaskStore = defineStore("task", () => {
   };
 
   const getAlltask = async () => {
-    const tasksData = await getData<TaskType[]>("/tasks");
+    const params: Record<string, any> = {};
+
+    if (filterStore.filters.searchQuery) {
+      params.title = `*${filterStore.filters.searchQuery}*`;
+    }
+
+    if (filterStore.filters.sortBy) {
+      params.sortBy = filterStore.filters.sortBy;
+    }
+
+    const tasksData = await getData<TaskType[]>("/tasks", params);
     tasks.value = tasksData;
   };
 
@@ -47,6 +61,7 @@ export const useTaskStore = defineStore("task", () => {
         title: inputTitle.value,
         isDone: false,
         category: category || "",
+        description: descriptionTask.value
       });
 
       if (categoryTask.value === "custom" && customCategory.value) {
@@ -66,6 +81,7 @@ export const useTaskStore = defineStore("task", () => {
       inputTitle.value = "";
       categoryTask.value = "";
       customCategory.value = "";
+      descriptionTask.value = "";
     } catch (error: any) {
       console.log(error.message);
     } finally {
@@ -115,6 +131,7 @@ export const useTaskStore = defineStore("task", () => {
     inputTitle,
     categoryTask,
     customCategory,
+    descriptionTask,
     getAlltask,
     getAllCategories,
     getTask,

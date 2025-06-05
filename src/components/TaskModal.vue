@@ -10,6 +10,8 @@ const taskStore = useTaskStore();
 onMounted(async () => {
   await taskStore.getAllCategories();
 });
+
+
 </script>
 
 <template>
@@ -21,11 +23,22 @@ onMounted(async () => {
       </button>
     </template>
     <template #body>
+      <h4 class="text-lg font-semibold text-gray-900 text-center">
+        название задачи
+      </h4>
       <input
         v-model="taskStore.inputTitle"
         placeholder="Введите задачу..."
         class="block w-full min-h-[50px] rounded-[1em] border-2 border-gray-300 px-4 py-2 placeholder-gray-400 shadow-sm focus:outline focus:border-sky-500 task-add-input"
       />
+      <h4 class="text-lg font-semibold text-gray-900 text-center">
+        описание задачи
+      </h4>
+      <textarea
+        v-model="taskStore.descriptionTask"
+        placeholder="введите описание задачи"
+        class="block w-full rounded-[1em] px-4 py-2 min-h-[100px] shadow-sm focus:outline focus:border-sky-500  border-2 border-gray-300"
+      ></textarea>
       <h4 class="text-lg font-semibold text-gray-900 text-center">
         категория задачи
       </h4>

@@ -33,7 +33,7 @@ export const useLoginStore = defineStore("login", () => {
 
       if (response.status === 200 || response.status === 201) {
         const token = response.data.token;
-        authStore.login(token);
+        authStore.setAuthToken(token);
 
         const userData = await authStore.checkAuth();
 
