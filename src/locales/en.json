@@ -1,0 +1,48 @@
+{
+  "tasks": {
+    "noTask": "There is a no task at present :D"
+  },
+  "modalAdd": {
+    "newTask": "New task",
+    "nameTask": "Name task",
+    "WriteNameTask": "Write name task",
+    "WriteDescriptionTask": "Write description task",
+    "descriptionTask": "Description Task",
+    "categoryTask": "Category task",
+    "withoutCategory": "Without category",
+    "otherCategory": "Other category",
+    "otherCategoryTitle": "Other category task",
+    "wrireYourCategory": "Write your category",
+    "addTask": "Add task"
+  },
+  "descriptionModal": {
+    "titleModal": "Editing description of task",
+    "buttonName": "Change"
+  },
+  "categoryModal": {
+    "titleModal": "Editing category of task",
+    "buttonName": "Change"
+  },
+  "account": {
+    "logout": "logout of account",
+    "loginTitle": "Entry",
+    "entrance": "Entrance",
+    "password": "password",
+    "authorization": "Authorization",
+    "noAccountText": "No account then register",
+    "enterEmail": "Enter email...",
+    "enterPassword": "Enter password...",
+    "registrationTitle": "Registration",
+    "createNewAccount": "Create new account",
+    "loginSuccess": "You have successfully logged in"
+  },
+  "sortTask": {
+    "withoutSort": "Without sort",
+    "byName": "by name",
+    "unfinished": "unfished",
+    "finished": "finished"
+  },
+  "filtersTask": {
+    "searchTask": "Search task..."
+  }
+}

@@ -12,7 +12,7 @@ const { fieldModal, updateFieldModal } = useTaskField("description")
   <ModalLayout>
     <template #header>
       <h3 class="text-xl font-semibold text-gray-900">
-        Редактирование описание задачи
+        {{ $t('descriptionModal.titleModal') }}
       </h3>
       <button @click="modalStore.closeModal()" class="cursor-pointer">
         <i class="fa-solid fa-xmark fa-lg"></i>
@@ -29,7 +29,7 @@ const { fieldModal, updateFieldModal } = useTaskField("description")
           class="bg-(--bg-main) text-white p-2 rounded-lg w-[120px] cursor-pointer"
           @click="updateFieldModal"
         >
-          Изменить
+        {{ $t('descriptionModal.buttonName') }}
         </button>
       </div>
     </template>

@@ -18,8 +18,8 @@ const handleSubmit = async () => {
   <AuthLayout>
     <form @submit.prevent="handleSubmit">
       <div class="flex justify-between items-center">
-        <h3 class="font-bold text-xl">Регистрация</h3>
-        <router-link class="" to="/auth">Войти</router-link>
+        <h3 class="font-bold text-xl">{{ $t('account.registrationTitle') }}</h3>
+        <router-link class="" to="/auth">{{ $t('account.loginTitle') }}</router-link>
       </div>
 
       <div class="flex flex-col gap-4 mt-[1em]">
@@ -30,19 +30,19 @@ const handleSubmit = async () => {
           <input
             class="border-2 rounded-lg p-2 focus:outline focus:border-sky-500"
             type="email"
-            placeholder="Введите Email... "
+            :placeholder="$t('account.enterEmail')"
             v-model="registerStore.userEmail"
           />
         </div>
 
         <flex class="flex flex-col">
           <label class="block text-gray-900 text-sm font-bold mb-2"
-            >Пароль:
+            >{{ $t('account.password') }}:
           </label>
           <input
             class="border-2 rounded-lg p-2 focus:outline focus:border-sky-500"
             type="password"
-            placeholder="Введите пароль..."
+            :placeholder="$t('account.enterPassword')"
             v-model="registerStore.userPassword"
           />
         </flex>
@@ -51,7 +51,7 @@ const handleSubmit = async () => {
           type="submit"
           class="cursor-pointer bg-[#4C75A3] rounded-xl text-white py-2 w-3/5 my-0 mx-auto form__btn"
         >
-          Создать новый аккаунт
+          {{ $t("account.createNewAccount") }}
         </button>
       </div>
     </form>

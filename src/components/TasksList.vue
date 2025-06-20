@@ -2,6 +2,7 @@
   import { onMounted } from "vue";
   import Task from "./Task.vue";
   import { useTaskStore } from "../stores/taskStore";
+  import Pagination from "./Pagination.vue";
 
   const taskStore = useTaskStore();
 
@@ -16,7 +17,7 @@
       class="mt-[2em] text-center font-semibold text-xl"
       v-if="!taskStore.tasks.length"
     >
-      На данный момент задач не имеется :D
+      {{ $t('tasks.noTask') }}
     </p>
     <ul class="my-[2em] flex flex-col gap-4 justify-center items-center">
       <li class="w-[50%] task-item" v-for="task in taskStore.tasks" :key="task.id">
@@ -28,6 +29,13 @@
         :description="task.description"/>
       </li>
     </ul>
+
+    <Pagination
+      v-if="taskStore.meta"
+      :totalPages="taskStore.meta.total_pages"
+      :currentPage="taskStore.meta.current_page"
+      :onPageChange="taskStore.setPage"
+    />
   </template>
 
   <style scoped lang="scss">

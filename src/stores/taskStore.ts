@@ -1,14 +1,17 @@
 import { defineStore } from "pinia";
 import api from "../api";
 import { ref } from "vue";
-import { type Task as TaskType, type Category } from "../types/types";
+import {
+  type Task as TaskType,
+  type Category,
+  type MetaPagination,
+} from "../types/types";
 import getData from "../generics/getDataGeneric";
 import { useLoadingStore } from "./loadingStore";
 import { useModalStore } from "./modalStore";
 import { useFilterStore } from "./FilterStore";
 
 export const useTaskStore = defineStore("task", () => {
-  
   const loading = useLoadingStore();
   const modalStore = useModalStore();
   const filterStore = useFilterStore();
@@ -22,13 +25,21 @@ export const useTaskStore = defineStore("task", () => {
   const descriptionTask = ref("");
   const categories = ref<Category[]>([]);
 
+  // пагинация
+  const meta = ref<MetaPagination | null>(null);
+  const currentPage = ref(1);
+  const limit = 4;
+
   const getTask = async (id: number) => {
     const taskData = await getData<TaskType>(`/tasks/${id}`);
     task.value = taskData;
   };
 
-  const getAlltask = async () => {
-    const params: Record<string, any> = {};
+  const getAlltask = async (page = currentPage.value) => {
+    const params: Record<string, string | number> = {
+      page,
+      limit,
+    };
 
     if (filterStore.filters.searchQuery) {
       params.title = `*${filterStore.filters.searchQuery}*`;
@@ -38,9 +49,27 @@ export const useTaskStore = defineStore("task", () => {
       params.sortBy = filterStore.filters.sortBy;
     }
 
-    const tasksData = await getData<TaskType[]>("/tasks", params);
-    tasks.value = tasksData;
+
+    const tasksData = await getData<{
+      items: TaskType[];
+      meta: {
+        total_items: number;
+        total_pages: number;
+        current_page: number;
+        per_page: number;
+        remaining_count: number;
+      };
+    }>("/tasks", params);
+
+    tasks.value = tasksData.items;
+    meta.value = tasksData.meta;
+    currentPage.value = tasksData.meta.current_page;
   };
+
+  const setPage = (page:number) => {
+    currentPage.value = page;
+    getAlltask(page)
+  }
 
   const getAllCategories = async () => {
     const categoriesData = await getData<Category[]>("/categories");
@@ -61,7 +90,7 @@ export const useTaskStore = defineStore("task", () => {
         title: inputTitle.value,
         isDone: false,
         category: category || "",
-        description: descriptionTask.value
+        description: descriptionTask.value,
       });
 
       if (categoryTask.value === "custom" && customCategory.value) {
@@ -132,11 +161,14 @@ export const useTaskStore = defineStore("task", () => {
     categoryTask,
     customCategory,
     descriptionTask,
+    meta,
+    currentPage,
     getAlltask,
     getAllCategories,
     getTask,
     addTask,
     removeTask,
     updateTaskField,
+    setPage
   };
 });

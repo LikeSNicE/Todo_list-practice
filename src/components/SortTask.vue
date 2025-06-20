@@ -14,7 +14,7 @@ const onChangeSelect = (event: Event) => {
 watch(
   () => filterStore.filters.sortBy,
   () => {
-    taskStore.getAlltask();
+    taskStore.getAlltask(1);
   },
   { deep: true }
 );
@@ -25,17 +25,25 @@ watch(
     @change="onChangeSelect"
     class="border rounded-md outline-none bg-(--bg-main) text-white sort-task-select"
   >
-    <option class="bg-white text-black" value="">Без сортировки</option>
-    <option class="bg-white text-black" value="title">По названию</option>
-    <option class="bg-white text-black" value="-isDone">Завершенные</option>
-    <option class="bg-white text-black" value="isDone">Не завершенные</option>
+    <option class="bg-white text-black" value="">
+      {{ $t("sortTask.withoutSort") }}
+    </option>
+    <option class="bg-white text-black" value="title">
+      {{ $t("sortTask.byName") }}
+    </option>
+    <option class="bg-white text-black" value="-isDone">
+      {{ $t("sortTask.finished") }}
+    </option>
+    <option class="bg-white text-black" value="isDone">
+      {{ $t("sortTask.unfinished") }}
+    </option>
   </select>
 </template>
 
 <style scoped lang="scss">
-  .sort-task-select{
-    @media(max-width: 440px){
-      min-height: 44px;
-    }
+.sort-task-select {
+  @media (max-width: 440px) {
+    min-height: 44px;
   }
+}
 </style>
