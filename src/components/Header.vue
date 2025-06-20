@@ -31,14 +31,14 @@ const handleLogOut = () => {
         v-if="!authStore.authState.isAuthenticated"
         class="text-xl"
         to="/auth"
-        >Вход</router-link
+        >{{ $t('account.entrance') }}</router-link
       >
       <button
         v-if="authStore.authState.isAuthenticated"
         @click="handleLogOut()"
         class="bg-(--delete) text-white py-2 px-2 rounded-lg cursor-pointer"
       >
-        Выйти из аккаунта
+        {{ $t('account.logout') }}
       </button>
     </div>
   </header>

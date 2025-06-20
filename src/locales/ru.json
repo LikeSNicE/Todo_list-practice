@@ -1,0 +1,48 @@
+{
+  "tasks": {
+    "noTask": "На данный момент задач не имеется :D"
+  },
+  "modalAdd": {
+    "newTask": "Новая задача",
+    "nameTask": "Название задачи",
+    "WriteNameTask": "Введите задачу...",
+    "WriteDescriptionTask": "введите описание задачи",
+    "descriptionTask": "Описание задачи",
+    "categoryTask": "Категория задачи",
+    "withoutCategory": "Без категории",
+    "otherCategory": "Другое",
+    "otherCategoryTitle": "Другая категория задачи",
+    "wrireYourCategory": "Запишите свою категорию",
+    "addTask": "Добавление задачи"
+  },
+  "descriptionModal": {
+    "titleModal": "Редактирование описание задачи",
+    "buttonName": "Изменить"
+  },
+  "categoryModal": {
+    "titleModal": "Редактирование категории задачи",
+    "buttonName": "Изменить"
+  },
+  "account": {
+    "logout": "Выйти из аккаунта",
+    "loginTitle": "Войти",
+    "entrance": "Вход",
+    "password": "Пароль",
+    "authorization": "Авторизоваться",
+    "noAccountText": "Нет аккаунта тогда зарегистрируетесь",
+    "enterEmail": "Введите email...",
+    "enterPassword": "Введите пароль...",
+    "registrationTitle": "Регистрация",
+    "createNewAccount": "Создать новый аккаунт",
+    "loginSuccess": "Вы успешно вошли в систему"
+  },
+  "sortTask": {
+    "withoutSort": "Без сортировки",
+    "byName": "По названию",
+    "unfinished": "Не завершенные",
+    "finished": "Завершенные"
+  },
+  "filtersTask": {
+    "searchTask": "Поиск задачи..."
+  }
+}

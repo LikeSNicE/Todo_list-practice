@@ -4,6 +4,7 @@ import { useAuthStore } from "./authStore";
 import { useRouter } from "vue-router";
 import api from "../api";
 import { useLoadingStore } from "./loadingStore";
+import { useI18n } from "vue-i18n";
 
 export const useLoginStore = defineStore("login", () => {
   const loadingStore = useLoadingStore();
@@ -13,6 +14,8 @@ export const useLoginStore = defineStore("login", () => {
   const password = ref("");
 
   const router = useRouter();
+
+  const {t} = useI18n();
 
   const loginUser = async (): Promise<void> => {
     try {
@@ -38,13 +41,13 @@ export const useLoginStore = defineStore("login", () => {
         const userData = await authStore.checkAuth();
 
         if (userData) {
-          alert("Вы успешно вошли в систему");
+          alert(t("account.loginSuccess"));
           router.push("/");
           email.value = "";
           password.value = "";
         }
       } else {
-        alert("Ошибка авторизации.");
+        alert("Ошибка авторизации");
       }
     } catch (error: any) {
       if (error.response) {
@@ -54,7 +57,7 @@ export const useLoginStore = defineStore("login", () => {
           }`
         );
       } else {
-        alert("Произошла ошибка. Проверьте подключение к серверу.");
+        alert("Произошла ошибка. Проверьте подключение к серверу");
       }
     } finally {
       loadingStore.stopLoading();

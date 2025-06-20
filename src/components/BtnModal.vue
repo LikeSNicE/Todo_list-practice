@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <div class="fixed right-4 bottom-10  
+  <div class="fixed right-4 bottom-20  
   md:right-[max(1rem,calc(50%-640px+1rem))]
   btn-modal-wrapper">
     <button
@@ -27,8 +27,8 @@
 .btn-modal-adaptive{
   @media(max-width: 900px){
     width: 100%;
-    min-height: 40px;
     border-radius: 1em;
+    height: 40px;
   }
 }
 </style>

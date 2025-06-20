@@ -23,6 +23,14 @@ export interface User{
   password: string
 }
 
+export interface MetaPagination {
+  total_items: number;
+  total_pages: number;
+  current_page: number;
+  per_page: number;
+  remaining_count: number;
+}
+
 // ========== Types 
 
 export type TodoProps <Tcategory = string | null> = {
@@ -31,6 +39,12 @@ export type TodoProps <Tcategory = string | null> = {
   isDone: boolean,
   category: Tcategory;
   description: string
+}
+
+export type PaginationProps = {
+  totalPages: number,
+  currentPage: number,
+  onPageChange: Function
 }
 
 export type TaskField = "category" | "description";

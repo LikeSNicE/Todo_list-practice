@@ -12,7 +12,7 @@ const onChangeSearchQuery = (event: Event) =>{
 }
 
 watch(() => filterStore.filters.searchQuery, () => {
-  taskStore.getAlltask();
+  taskStore.getAlltask(1);
 }, {deep: true})
 </script>
 
@@ -22,7 +22,7 @@ watch(() => filterStore.filters.searchQuery, () => {
     <input
       class="border-2 rounded-md py-2 pl-11 pr-4 outline-none focus:border-blue-500 w-full"
       type="text"
-      placeholder="Поиск задачи..."
+      :placeholder="$t('filtersTask.searchTask')"
       @input="onChangeSearchQuery"
     />
   </div>

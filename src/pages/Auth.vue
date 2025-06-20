@@ -9,7 +9,7 @@ const loginStore = useLoginStore();
 <template>
   <AuthLayout>
     <form @submit.prevent="loginStore.loginUser()">
-      <h3 class="font-bold text-xl text-center">Войти</h3>
+      <h3 class="font-bold text-xl text-center">{{ $t('account.loginTitle') }}</h3>
       <div class="flex flex-col gap-4 mt-[1em] justify-center items-center">
         <div class="flex flex-col w-3/5 form__input">
           <label class="block text-gray-900 text-sm font-bold mb-2"
@@ -18,18 +18,18 @@ const loginStore = useLoginStore();
           <input
             class="border-2 rounded-lg p-2 focus:outline focus:border-sky-500"
             type="email"
-            placeholder="Введите Email..."
+            :placeholder="$t('account.enterEmail')"
             v-model="loginStore.email"
           />
         </div>
         <div class="flex flex-col w-3/5 form__input">
           <label class="block text-gray-900 text-sm font-bold mb-2"
-            >Пароль:
+            >{{ $t('account.password') }}:
           </label>
           <input
             class="border-2 rounded-lg p-2 focus:outline focus:border-sky-500   "
             type="password"
-            placeholder="Введите пароль..."
+            :placeholder="$t('account.enterPassword')"
             v-model="loginStore.password"
           />
         </div>
@@ -38,14 +38,14 @@ const loginStore = useLoginStore();
           type="submit"
           class="flex items-center justify-center cursor-pointer bg-[#4C75A3] rounded-xl text-white py-2 text-center w-3/5 my-0 mx-auto form__btn"
         >
-          Авторизоваться
+          {{ $t('account.authorization') }}
         </button>
 
         <div class="flex flex-col items-center auth-form__text">
           <router-link
             to="/registration"
             class="italic font-semibold text-color"
-            >Нет аккаунта тогда зарегистрируетесь</router-link
+            >{{ $t('account.noAccountText') }}</router-link
           >
         </div>
       </div>
